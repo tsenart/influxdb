@@ -5,6 +5,7 @@
 - [Issue #643](https://github.com/influxdb/influxdb/issues/643). Support pretty print json. (Thanks, @otoolep)
 - [Issue #641](https://github.com/influxdb/influxdb/issues/641). Support multiple storage engines
 
+
 ### Bugfixes
 
 - [Issue #651](https://github.com/influxdb/influxdb/issues/651). Change permissions of symlink which fix some installation issues. (Thanks, @Dieterbe)
