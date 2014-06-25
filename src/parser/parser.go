@@ -542,6 +542,8 @@ func ParseSelectQuery(query string) (*SelectQuery, error) {
 	return selectQuery, nil
 }
 
+// ParseQuery lexes and parses the input string as InfluxDB queries which it
+// returns in a slice. An error is returned when this process fails.
 func ParseQuery(query string) ([]*Query, error) {
 	queryString := C.CString(query)
 	defer C.free(unsafe.Pointer(queryString))
