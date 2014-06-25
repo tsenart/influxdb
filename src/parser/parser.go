@@ -575,23 +575,29 @@ func ParseQuery(query string) ([]*Query, error) {
 		if err != nil {
 			return nil, err
 		}
-
 		return []*Query{{QueryString: query, SelectQuery: selectQuery}}, nil
-	} else if q.delete_query != nil {
+	}
+
+	if q.delete_query != nil {
 		deleteQuery, err := parseDeleteQuery(q.delete_query)
 		if err != nil {
 			return nil, err
 		}
 		return []*Query{{QueryString: query, DeleteQuery: deleteQuery}}, nil
-	} else if q.drop_series_query != nil {
+	}
+
+	if q.drop_series_query != nil {
 		dropSeriesQuery, err := parseDropSeriesQuery(query, q.drop_series_query)
 		if err != nil {
 			return nil, err
 		}
 		return []*Query{{QueryString: query, DropSeriesQuery: dropSeriesQuery}}, nil
-	} else if q.drop_query != nil {
+	}
+
+	if q.drop_query != nil {
 		return []*Query{{QueryString: query, DropQuery: &DropQuery{Id: int(q.drop_query.id)}}}, nil
 	}
+
 	return nil, fmt.Errorf("Unknown query type encountered")
 }
 
